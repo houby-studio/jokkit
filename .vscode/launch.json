@@ -1,0 +1,45 @@
+{
+  // Pro informace o možných atributech použijte technologii IntelliSense.
+  // Umístěním ukazatele myši zobrazíte popisy existujících atributů.
+  // Další informace najdete tady: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug executable 'jokkit-backend'",
+      "cargo": {
+        "args": [
+          "build",
+          "--bin=jokkit-backend",
+          "--package=jokkit-backend"
+        ],
+        "filter": {
+          "name": "jokkit-backend",
+          "kind": "bin"
+        }
+      },
+      "args": [],
+      "cwd": "${workspaceFolder}/backend",
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug unit tests in executable 'jokkit-backend'",
+      "cargo": {
+        "args": [
+          "test",
+          "--no-run",
+          "--bin=jokkit-backend",
+          "--package=jokkit-backend"
+        ],
+        "filter": {
+          "name": "jokkit-backend",
+          "kind": "bin"
+        }
+      },
+      "args": [],
+      "cwd": "${workspaceFolder}/backend"
+    }
+  ]
+}

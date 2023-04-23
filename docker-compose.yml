@@ -1,0 +1,56 @@
+version: "3.9"
+services:
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/workspace:cached
+    command: npm run serve
+    stdin_open: true
+    tty: true
+
+  # backend:
+  #   build: ./backend
+  #   container_name: backend
+  #   ports:
+  #     - "3000:3000"
+  #   volumes:
+  #     - ./backend:/app
+  #   command: cargo run
+  #   depends_on:
+  #     - db
+  #     - cache
+  backend:
+    image: mcr.microsoft.com/devcontainers/rust:0-1-bullseye
+    container_name: backend
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/workspace:cached
+    depends_on:
+      - db
+      - cache
+    command: sleep infinity
+
+  db:
+    image: postgres:latest
+    container_name: db
+    environment:
+      POSTGRES_USER: your_user
+      POSTGRES_PASSWORD: your_password
+      POSTGRES_DB: your_database
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  cache:
+    image: redis:latest
+    container_name: cache
+    ports:
+      - "6379:6379"
+
+volumes:
+  db-data:

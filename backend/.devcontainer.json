@@ -1,0 +1,38 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/rust-postgres
+{
+  "name": "Rust development with Vue, Postgres and Redis services",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "backend",
+  "shutdownAction": "none",
+  "workspaceFolder": "/workspace",
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  "features": {
+    // "ghcr.io/devcontainers/features/rust:1": {
+    //   "version": "1.69.0"
+    // },
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  // Rust backend on 3000
+  // Vue frontend on 8080
+  // PostgreSQL DB on 5432
+  "forwardPorts": [
+    3000,
+    5432
+  ],
+  // Use 'postCreateCommand' to run commands after the container is created.
+  // "postCreateCommand": "rustc --version",
+  // Configure tool-specific properties.
+  "customizations": {
+    // Configure properties specific to VS Code.
+    "vscode": {
+      "settings": {},
+      "extensions": [
+        "streetsidesoftware.code-spell-checker"
+      ]
+    }
+  }
+  // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+  // "remoteUser": "root"
+}
