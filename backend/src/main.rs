@@ -4,7 +4,7 @@ use axum::{routing::get, Router};
 async fn main() {
     let app = Router::new().route(
         "/",
-        get(|| async { "Hello, world! This is Jokkit. This time for sure!" }),
+        get(|| async { "Hello, world! This is Jokkit. This time for sure! We will delete this!" }),
     );
 
     axum::Server::bind(&"0.0.0.0:3000".parse().unwrap())
